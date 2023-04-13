@@ -30,8 +30,14 @@ const random = () => {
 
 // fonction qui sert a montrer ou non la slide et alterner la variable alternate pour désigné la slide1 ou 2
 const alternateSlide = () => {
-    tabSlide[alternate].style.visibility = "visible";
-    tabSlide[(alternate+1)%2].style.visibility = "hidden"; //(alternate+1)%2 ser a designé 1 si alternate == 0 et 0 si ===1
+    let slideNow = tabSlide[alternate];
+    let slideNex =  tabSlide[(alternate+1)%2];
+    slideNow.style.visibility = "visible";
+    slideNow.style.position = "initial";
+    slideNex.style.visibility = "hidden";
+    slideNex.style.position = "absolute";
+    // tabSlide[alternate].style.zIndex= "1";
+    // tabSlide[(alternate+1)%2].style.zIndex= "0"; //(alternate+1)%2 ser a designé 1 si alternate == 0 et 0 si ===1
     alternate = (alternate+1)%2;
 }
 
@@ -39,10 +45,11 @@ const alternateSlide = () => {
 const randomSlide = () => {
     idIm = random();
     tabSlide[(alternate+1)%2].src = tabIm[idIm];
+    console.log(alternate, idIm);
     alternateSlide();
 }
 
 //**************************************************************************************** */
 
 // j'appel une fois random slide pour chargé la deuxieme slide aléatoirement
-//randomSlide();
+randomSlide();

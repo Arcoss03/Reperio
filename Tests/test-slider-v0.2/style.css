@@ -6,3 +6,8 @@
     width: 500px;
     height: 705px;
 }
+
+.slide2 {
+    position: absolute;
+    visibility: hidden;
+}
