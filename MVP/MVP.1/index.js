@@ -1,3 +1,13 @@
+/*
+pour demarrer le serveur faire la commande npm start ds le terminal 
+dans l'emplacement du dossier MVP.1
+le serveur ttourne sur le localhost 3000 par defaut
+changer aussi les info de base de donnée comme port sur lequel tourne la db password ...
+j'utilise phpmyadmin sur mamp pour faire tourner la db
+*/
+
+//******************************************************************* */
+
 const express = require('express');
 const mysql = require('mysql');
 
@@ -9,7 +19,9 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'root',
     database: 'db-mvp-projet',
-  });
+});
+
+const port = '3000';
 
 db.connect((err) => {
     if (err){
@@ -18,8 +30,9 @@ db.connect((err) => {
     console.log('Mysql connected');
 });
 
-app.listen('3000', () => {
-    console.log("server started on port 3000");
+//on ouvre le serveur sur le port indiqué
+app.listen(port, () => {
+    console.log(`server started on port ${port}`);
 });
 
 //affichage fichier user-choice
@@ -30,8 +43,11 @@ app.get("/", (req, res) => {
 app.get('/liste/recruteur', (req, res) => {
     db.query('SELECT name, description FROM recruteur', (err, results) => {
         if (err) throw err;
+        //dataArray transforme le res de la requete sql en tableau d'objets https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
         let dataArray = JSON.parse(JSON.stringify(results));
+        // variable html qui va etre send a la fin qui rpz le fichier html généré
         let html = '<ul>';
+        //on boucle le nombre de fois qu'il y a d'objets ds le tableau resultat de la requette
         for (let i = 0; i < dataArray.length; i++){
             html += `<li>${dataArray[i].name}</li>`;
             html += `<li>${dataArray[i].description}</li>`
