@@ -1,0 +1,7 @@
+--tous les matchs d'un candidat
+--tous les matchs d'une entreprise
+--chemin du cv du candidat
+--chemin de la pp du candidat
+--chemin du cv de l'entreprise
+--chemin de la pp l'entreprise
+--savoir si il y a match 

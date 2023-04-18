@@ -1,0 +1,13 @@
+/* .slide {
+    width: 50%;
+    height: auto;
+} */
+.slide {
+    width: 500px;
+    height: 705px;
+}
+
+.slide2 {
+    position: absolute;
+    visibility: hidden;
+}

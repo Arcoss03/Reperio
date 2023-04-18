@@ -1,0 +1,12 @@
+.firstname {
+    text-transform: lowercase;
+}
+
+
+.surname {
+    text-transform: uppercase;
+}
+
+h1 {
+    color: blue;
+}
