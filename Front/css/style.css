@@ -16,7 +16,7 @@ body{
 }
 
 .margin-form{
-    margin: 100px 0 15px 0;
+    margin: 50px 0 15px 0;
 }
 
 .margin-form-text{
@@ -47,9 +47,13 @@ body{
 /* Formulaire --------------------------------------------------------------- */
 
 .form-text{
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius: 5px;
     padding: 15px 2px;
+}
+.form-text:focus {
+    border-color: #6E38A4;
+    outline: none;
 }
 
 .submit-button{
@@ -61,8 +65,9 @@ body{
     color: #6E38A4;
     background: transparent;
     cursor: pointer;
-    transition: ease-out 0.5s;
-    border: 2px solid #6E38A4;
+    /* transition: ease-out 0.5s; */
+    transition: ease-out 0.2s;
+    border: 3px solid #6E38A4;
     border-radius: 10px;
     box-shadow: inset 0 0 0 0 #6E38A4;
 }
@@ -76,6 +81,9 @@ body{
     transform: scale(0.9);
 }
 
+.logo-reperio {
+    width: 330px;
+}
 /* media queries --------------------------------------------------------------- */
 
 @media (max-width: 600px) {
