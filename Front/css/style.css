@@ -105,3 +105,61 @@ body{
         background-color: #6E38A4;
     }
 }
+
+/* photo de profil --------------------------------------------------------------- */
+
+.photo-profil  {
+    width: 72px;
+    height: 72px;
+    background: #6E38A4;
+    border: 3px solid #1A1A1A;
+    border-radius: 20px;
+}
+
+/* dimension image --------------------------------------------------------------- */
+
+.dimension-image {
+
+    width: 324px;
+    height: 457px;
+
+    background: #4c9fb8;
+    border: 4px solid #1A1A1A;
+    border-radius: 20px;
+}
+
+/* Reperio-logo 2 ----------------------------------------------------------------*/
+
+.logo2 {
+    width: 93px;
+    height: 66px;
+    left: 14px;
+    top: 14px;
+}
+
+/*flex----------------------------------------------------------------------------*/
+
+.flex {
+
+    display: flex;
+
+}
+
+/* cercle ------------------------------------------------------------------------*/
+
+.cercle {
+
+    width: 88px;
+    height: 88px;
+    padding: 15px 15px;
+}
+
+/* bouton slide -----------------------------------------------------------------*/
+
+.bouton-slide{
+
+    width: 69px;
+    height: 27px;
+}
+  
+  
