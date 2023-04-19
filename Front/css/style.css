@@ -34,18 +34,10 @@ a{
     background-repeat: no-repeat;
     background-position: center;
 }
-.pointer{
-    cursor: pointer;
-    width: 90px;
-    height: 90px;
-    border-radius: 90px;
+
+#selectuser:hover{
+    color: #6E38A4;
 }
-
-.pointer:hover, .pointer:active{
-    border: 3px solid #6E38A4;
-}
-
-
 
 /* Margins --------------------------------------------------------------- */
 
@@ -107,6 +99,21 @@ a{
 
 .a-hover:hover{
     text-decoration: underline;
+}
+
+.pointer-swipe{
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+}
+
+.pointer-swipe:hover, .pointer-swipe:active{
+    border: 3px solid #6E38A4;
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 /* Formulaire --------------------------------------------------------------- */

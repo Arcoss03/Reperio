@@ -15,8 +15,20 @@ function updatePlaceholders() {
     }
 }
 
+
+selectuser.addEventListener('click', function(){
+    if (selectuser.textContent == 'Candidat'){
+        selectuser.innerHTML = 'Entreprise';
+        slideCheckbox.checked = 1;
+    } else {
+        selectuser.innerHTML = 'Candidat';
+        slideCheckbox.checked = 0;
+    }
+})
+
 slideCheckbox.addEventListener('change', updatePlaceholders);
 updatePlaceholders();
+
 
 
 
