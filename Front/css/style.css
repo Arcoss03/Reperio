@@ -26,6 +26,11 @@ body{
 
 /* Flex-box --------------------------------------------------------------- */
 
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
 .flex-column{
     display: flex;
     flex-direction: column;
@@ -37,9 +42,12 @@ body{
 
 /* text --------------------------------------------------------------- */
 
-.a-text{
+.text{
     font-size: 20px;
     line-height: 24px;
+}
+
+.a-text{
     text-decoration: none;
     color: #6E38A4;
     transition: 0.2s;
@@ -161,5 +169,34 @@ body{
 
 /* bouton slide -----------------------------------------------------------------*/
 
-
   
+.slider-button{
+    position: relative;
+    margin: 0 auto;
+    border: solid 3px #6E38A4;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    margin-bottom: 30px;
+    
+}
+
+.slider-button::before{
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    margin: 2.5px;
+    transition: 0.2s;
+}
+
+#slide{
+    display: none;
+}
+
+#slide:checked + .slider-button::before{
+    transform: translateX(40px);
+}

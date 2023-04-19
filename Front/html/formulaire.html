@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="website icon" href="../img/web-icon.svg">
+    <link rel="icon" href="../img/web-icon.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,21 +15,31 @@
     <title>Reperio</title>
 </head>
 <body class="flex-column align-center margin-center margin-body-top">
+    <script src="../scripts/formulaire.js" defer></script>
 
     <img src="../img/reperio-index.svg" alt="Reperio">
 
+    <!-- Arthur je te laisse gerer la method , l'action et les nom des input pour ton back  -->
     <form class="flex-column margin-form" action="">
         <input class="form-text margin-form-text" type="mail" name="mail" id="mail" placeholder="Email">
-        <input class="form-text margin-form-text" type="prenom" name="prenom" id="prenom" placeholder="Prénom">
-        <input class="form-text margin-form-text" type="" name="Nom" id="Nom" placeholder="Nom">
+        <input class="form-text margin-form-text" type="text" name="prenom" id="prenom" placeholder="Prénom">
+        <input class="form-text margin-form-text" type="text" name="nom" id="nom" placeholder="nom">
         <input class="form-text margin-form-text" type="password" name="password" id="password" placeholder="Mot de passe">
-        <input class="form-text margin-form-text" type="confirm-password" name="confirm-password" id="confirm-password" placeholder="Confirmer le mot de passe">
+        <input class="form-text margin-form-text" type="password" name="confirm-password" id="confirm-password" placeholder="Confirmer le mot de passe">
         
-        <input type="checkbox" name="slide" id="slide">
-        <label for="slide">Slider</label>
+        <div class="flex-row">
+            <div class="text">
+                Candidat
+            </div>
+            <input type="checkbox" name="slide" id="slide">
+            <label class="slider-button" for="slide"></label>
+            <div class="text">
+                Entreprise
+            </div>
+        </div>
+        
         <input class="submit-button" type="submit" id="submit" value="S'inscrire">
     </form>
-
     
     
 </body>
