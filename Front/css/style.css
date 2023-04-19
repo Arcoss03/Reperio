@@ -42,6 +42,11 @@ body{
     line-height: 24px;
     text-decoration: none;
     color: #6E38A4;
+    transition: 0.2s;
+}
+
+.a-hover:hover{
+    text-decoration: underline;
 }
 
 /* Formulaire --------------------------------------------------------------- */
@@ -156,10 +161,5 @@ body{
 
 /* bouton slide -----------------------------------------------------------------*/
 
-.bouton-slide{
 
-    width: 69px;
-    height: 27px;
-}
-  
   
