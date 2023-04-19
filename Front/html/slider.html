@@ -15,23 +15,23 @@
     <title>Reperio</title>
 </head>
 <body class="flex-column align-center margin-center margin-body-top">
-    <div>
-        <img src="../img/reperio-index.svg" alt="Reperio" class="logo2">
-        <img class="photo-profil"></img>
-    </div>
-    <div>
-        <img class="dimension-image"></img>  
-    </div>
-    <div class="flex">
-        <div class="cercle">
-            <img src="../img/dislike.svg" alt="dislike" id="">
-        </div>
+    <header class="flex-row align-center margin-header">
+        <img class="logo-reperio2" src="../img/reperio-index.svg" alt="Reperio">
+        <div class="pdp"></div>
+    </header>
     
-        <div class="cercle">
-            <img src="../img/like.svg" alt="like" id="" class="">
-        </div>
+    <div class="swipe margin-form-text"></div>
 
-    </div>
+
+    <!-- Arthur je te laisse gerer la method , l'action et les nom des input pour ton back  -->
+    <form class="flex-row align-center" action="">
+        <input type="button" value="dislike" id="dislike">
+        <label class="margin-choice pointer" for="dislike" id="label-dislike"></label>
+
+        <input type="button" value="like" id="like">
+        <label class="pointer test" for="like" id="label-like"></label>
+    </form>
+    
 
 </body>
 </html>

@@ -8,6 +8,45 @@ body{
     font-weight: 400;
 }
 
+a{
+    text-decoration: none;
+}
+
+.test{
+    justify-content: center;
+    align-items: center;
+}
+
+/* IDs --------------------------------------------------------------- */
+
+#dislike,#like{
+    display: none;
+}
+
+#label-like{
+    background-image: url(../img/like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#label-dislike{
+    background-image: url(../img/dislike.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.pointer{
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+}
+
+.pointer:hover, .pointer:active{
+    border: 3px solid #6E38A4;
+}
+
+
+
 /* Margins --------------------------------------------------------------- */
 
 
@@ -23,6 +62,15 @@ body{
     margin-bottom: 30px;
 }
 
+.margin-choice{
+    margin-right: 70px;
+}
+
+.margin-header{
+    margin-bottom: 80px;
+}
+
+
 
 /* Flex-box --------------------------------------------------------------- */
 
@@ -34,6 +82,10 @@ body{
 .flex-column{
     display: flex;
     flex-direction: column;
+}
+
+.justify-spaceb{
+    justify-content: space-between;
 }
 
 .align-center{
@@ -85,89 +137,40 @@ body{
     box-shadow: inset 0 0 0 0 #6E38A4;
 }
 
-.submit-button:hover{
+.submit-button:hover, .submit-button:active{
     color: white;
     box-shadow: inset 0 -100px 0 0 #6E38A4;
 }
 
-.submit-button:active {
-    transform: scale(0.9);
-}
+/* Logo -----------------------------------------------------------------*/
 
 .logo-reperio {
     width: 330px;
 }
-/* media queries --------------------------------------------------------------- */
 
-@media (max-width: 600px) {
-    .submit-button{
-        padding: 15px 30px;
-        text-align: center;
-        font-size: 48px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        color: #6E38A4;
-        background: #fff;
-        cursor: pointer;
-        border: 4px solid #6E38A4;
-        border-radius: 10px;
-    }
-
-    .submit-button:active {
-        color: white;
-        background-color: #6E38A4;
-    }
+.logo-reperio2{
+    width: 100px;
+    margin-right: 100px;
 }
 
-/* photo de profil --------------------------------------------------------------- */
-
-.photo-profil  {
-    width: 72px;
-    height: 72px;
-    background: #6E38A4;
-    border: 3px solid #1A1A1A;
+.pdp{
+    width: 80px;
+    height: 80px;
+    border: 3px solid black;
     border-radius: 20px;
+    background-color: grey;
 }
 
-/* dimension image --------------------------------------------------------------- */
-
-.dimension-image {
-
-    width: 324px;
-    height: 457px;
-
-    background: #4c9fb8;
-    border: 4px solid #1A1A1A;
+.swipe{
+    height: 500px;
+    width: 300px;
+    border: 3px solid black;
     border-radius: 20px;
+    background-color: grey;
 }
 
-/* Reperio-logo 2 ----------------------------------------------------------------*/
 
-.logo2 {
-    width: 93px;
-    height: 66px;
-    left: 14px;
-    top: 14px;
-}
-
-/*flex----------------------------------------------------------------------------*/
-
-.flex {
-
-    display: flex;
-
-}
-
-/* cercle ------------------------------------------------------------------------*/
-
-.cercle {
-
-    width: 88px;
-    height: 88px;
-    padding: 15px 15px;
-}
-
-/* bouton slide -----------------------------------------------------------------*/
+/* Switch formulaire -----------------------------------------------------------------*/
 
   
 .slider-button{
@@ -200,3 +203,5 @@ body{
 #slide:checked + .slider-button::before{
     transform: translateX(40px);
 }
+
+
