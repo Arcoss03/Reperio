@@ -20,16 +20,16 @@ function updatePlaceholders() {
 selectuser.addEventListener('click', function(){
     if (selectuser.textContent == 'Candidat'){
         selectuser.innerHTML = 'Entreprise';
+        prenomInput.placeholder = 'Nom de l\'entreprise';
+        nomInput.placeholder = 'Liste des domaines';
         switchCheckbox.checked = 1;
     } else {
         selectuser.innerHTML = 'Candidat';
+        prenomInput.placeholder = 'Prénom';
+        nomInput.placeholder = 'Nom';
         switchCheckbox.checked = 0;
     }
 })
 
 switchCheckbox.addEventListener('change', updatePlaceholders);
 updatePlaceholders();
-
-
-
-

@@ -78,7 +78,6 @@ a{
 }
 
 .margin-header{
-    margin-bottom: 80px;
     margin-bottom: 30px;
 }
 
@@ -105,18 +104,16 @@ a{
     text-decoration: none;
     color: #6E38A4;
     background: transparent;
-    cursor: pointer;
-    /* transition: ease-out 0.5s; */
-    transition: ease-out 0.2s;
     border: 3px solid #6E38A4;
     border-radius: 10px;
-    box-shadow: inset 0 0 0 0 #6E38A4;
 }
 
-.submit-button:hover, .submit-button:active{
+.submit-button:active{
     color: white;
-    box-shadow: inset 0 -100px 0 0 #6E38A4;
+    background-color: #6E38A4;
 }
+
+
 
 /* -------------------- -------------------- */
 
@@ -264,4 +261,66 @@ a{
     bottom: 75px;
 }
 
+.mobile-choice{
+    position: relative;
+    bottom: 75px;
+}
+
 /* -------------------- -------------------- */
+
+/* ======================================== MEDIA QUERIES ======================================== */
+
+/* -------------------- SUBMIT BUTTON -------------------- */
+
+@media (min-width:600px) {
+
+    /* -------------------- SUBMIT BUTTON -------------------- */
+    .submit-button{
+        padding: 15px 30px;
+        text-align: center;
+        font-size: 48px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: #6E38A4;
+        background: transparent;
+        cursor: pointer;
+        transition: ease-out 0.2s;
+        border: 3px solid #6E38A4;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 0 #6E38A4;
+    }
+    
+    .submit-button:hover, .submit-button:active{
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #6E38A4;
+    }
+
+    /* -------------------- -------------------- */
+
+    /* -------------------- HEADER -------------------- */
+
+    /* -------------------- -------------------- */
+
+    /* -------------------- SLIDER -------------------- */
+    .relative-choice{
+        bottom: 350px;
+        left: 200px;
+    }
+
+    .mobile-choice{
+        bottom: 350px;
+        right: 200px;
+    }
+
+    .pdp{
+        margin-left: 500px;
+        width: 100px;
+    height: 100px;
+    }
+
+    .slide{
+        height: 500px;
+        width: 400px;
+    }
+    
+}
