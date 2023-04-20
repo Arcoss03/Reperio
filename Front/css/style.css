@@ -1,3 +1,5 @@
+/* ======================================== STYLE UNIVERSEL ======================================== */
+
 *{
     box-sizing: border-box;
 }
@@ -12,16 +14,199 @@ a{
     text-decoration: none;
 }
 
-.relative-choice{
-    position: relative;
-    bottom: 75px;
+.pointer{
+    cursor: pointer;
 }
 
+/* -------------------- Flex-Box -------------------- */
 
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
 
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
 
+.justify-spaceb{
+    justify-content: space-between;
+}
 
-/* IDs --------------------------------------------------------------- */
+.align-center{
+    align-items: center;
+}
+
+.align-end{
+    align-items: end;
+}
+
+/* -------------------- -------------------- */
+
+/* -------------------- Text -------------------- */
+
+.text{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.a-text{
+    text-decoration: none;
+    color: #6E38A4;
+    transition: 0.2s;
+}
+
+.a-hover:hover{
+    text-decoration: underline;
+}
+
+/* -------------------- -------------------- */
+
+/* -------------------- Margins -------------------- */
+
+.margin-body-top{
+    margin-top: 50px;
+}
+
+.margin-form{
+    margin: 50px 0 15px 0;
+}
+
+.margin-form-text{
+    margin-bottom: 30px;
+}
+
+.margin-header{
+    margin-bottom: 80px;
+    margin-bottom: 30px;
+}
+
+/* -------------------- -------------------- */
+
+/* -------------------- Formulaires -------------------- */
+
+.form-text{
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 15px 2px;
+    
+}
+.form-text:focus {
+    border-color: #6E38A4;
+    outline: none;
+}
+
+.submit-button{
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 48px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #6E38A4;
+    background: transparent;
+    cursor: pointer;
+    /* transition: ease-out 0.5s; */
+    transition: ease-out 0.2s;
+    border: 3px solid #6E38A4;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #6E38A4;
+}
+
+.submit-button:hover, .submit-button:active{
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #6E38A4;
+}
+
+/* -------------------- -------------------- */
+
+/* ======================================== INDEX ======================================== */
+
+/* -------------------- Logo -------------------- */
+.logo-reperio {
+    width: 330px;
+}
+
+/* -------------------- -------------------- */
+
+/* ======================================== FORUMULAIRE ======================================== */
+
+/* -------------------- HEADER -------------------- */
+
+#selectuser{
+    width: 100px;
+    margin-left: 80px;
+    text-align: end;
+}
+
+#selectuser:hover{
+    color: #6E38A4;
+}
+
+.logo-reperio2{
+    width: 100px;
+}
+
+/* -------------------- -------------------- */
+
+/* -------------------- Switch -------------------- */
+.switch-button{
+    position: relative;
+    margin: 0 auto;
+    border: solid 3px #6E38A4;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    margin-bottom: 30px;
+    
+}
+
+.switch-button::before{
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    margin: 2.5px;
+    margin: 3px;
+    transition: 0.2s;
+}
+
+#switch{
+    display: none;
+}
+
+#switch:checked + .switch-button::before{
+    transform: translateX(40px);
+}
+
+/* -------------------- -------------------- */
+
+/* ======================================== SLIDER ======================================== */
+
+/* -------------------- STRUCTURE -------------------- */
+.pdp{
+    width: 80px;
+    height: 80px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: grey;
+    margin-left: 100px;
+}
+
+.slide{
+    height: 500px;
+    width: 300px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: grey;
+}
+
+/* -------------------- -------------------- */
+
+/* -------------------- BOUTONS LIKE/DISLIKE -------------------- */
 
 #dislike,#like{
     display: none;
@@ -59,194 +244,24 @@ a{
     background-position: center;
 }
 
-#selectuser{
-    width: 100px;
-    margin-left: 80px;
-    text-align: end;
-}
-
-#selectuser:hover{
-    color: #6E38A4;
-}
-
-/* Margins --------------------------------------------------------------- */
-
-
-.margin-body-top{
-    margin-top: 50px;
-}
-
-.margin-form{
-    margin: 50px 0 15px 0;
-}
-
-.margin-form-text{
-    margin-bottom: 30px;
-}
-
-.margin-choice{
-    margin-right: 70px;
-}
-
-.margin-header{
-    margin-bottom: 80px;
-    margin-bottom: 30px;
-}
-
-
-
-/* Flex-box --------------------------------------------------------------- */
-
-.flex-row{
-    display: flex;
-    flex-direction: row;
-}
-
-.flex-column{
-    display: flex;
-    flex-direction: column;
-}
-
-.justify-spaceb{
-    justify-content: space-between;
-}
-
-.align-center{
-    align-items: center;
-}
-
-.align-end{
-    align-items: end;
-}
-
-/* text --------------------------------------------------------------- */
-
-.text{
-    font-size: 20px;
-    line-height: 24px;
-}
-
-.a-text{
-    text-decoration: none;
-    color: #6E38A4;
-    transition: 0.2s;
-}
-
-.a-hover:hover{
-    text-decoration: underline;
-}
-
-.pointer-swipe{
+.pointer-slide{
     cursor: pointer;
     width: 90px;
     height: 90px;
     border-radius: 90px;
 }
 
-.pointer-swipe:hover, .pointer-swipe:active{
+.pointer-slide:hover, .pointer-slide:active{
     border: 3px solid #6E38A4;
 }
 
-
-.pointer{
-    cursor: pointer;
+.margin-choice{
+    margin-right: 70px;
 }
 
-/* Formulaire --------------------------------------------------------------- */
-
-.form-text{
-    border: 3px solid black;
-    border-radius: 5px;
-    padding: 15px 2px;
-    
-}
-.form-text:focus {
-    border-color: #6E38A4;
-    outline: none;
-}
-
-.submit-button{
-    padding: 15px 30px;
-    text-align: center;
-    font-size: 48px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    color: #6E38A4;
-    background: transparent;
-    cursor: pointer;
-    /* transition: ease-out 0.5s; */
-    transition: ease-out 0.2s;
-    border: 3px solid #6E38A4;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 0 #6E38A4;
-}
-
-.submit-button:hover, .submit-button:active{
-    color: white;
-    box-shadow: inset 0 -100px 0 0 #6E38A4;
-}
-
-/* Logo -----------------------------------------------------------------*/
-
-.logo-reperio {
-    width: 330px;
-}
-
-.logo-reperio2{
-    width: 100px;
-}
-
-.pdp{
-    width: 80px;
-    height: 80px;
-    border: 3px solid black;
-    border-radius: 20px;
-    background-color: grey;
-    margin-left: 100px;
-}
-
-.swipe{
-    height: 500px;
-    width: 300px;
-    border: 3px solid black;
-    border-radius: 20px;
-    background-color: grey;
-}
-
-
-/* Switch formulaire -----------------------------------------------------------------*/
-
-  
-.switch-button{
+.relative-choice{
     position: relative;
-    margin: 0 auto;
-    border: solid 3px #6E38A4;
-    border-radius: 30px;
-    cursor: pointer;
-    width: 70px;
-    height: 30px;
-    margin-bottom: 30px;
-    
+    bottom: 75px;
 }
 
-.switch-button::before{
-    content: '';
-    position: absolute;
-    background-color: black;
-    width: 20px;
-    height: 20px;
-    border-radius: 30px;
-    margin: 2.5px;
-    margin: 3px;
-    transition: 0.2s;
-}
-
-#switch{
-    display: none;
-}
-
-#switch:checked + .switch-button::before{
-    transform: translateX(40px);
-}
-
-
+/* -------------------- -------------------- */
