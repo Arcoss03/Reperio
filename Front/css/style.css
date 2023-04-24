@@ -20,6 +20,7 @@ a{
     cursor: pointer;
 }
 
+
 /* -------------------- Flex-Box -------------------- */
 
 .flex-row{
@@ -151,14 +152,12 @@ a{
 /* -------------------- Switch -------------------- */
 .switch-button{
     position: relative;
-    margin: 0 auto;
     border: solid 3px #6E38A4;
     border-radius: 30px;
     cursor: pointer;
     width: 70px;
     height: 30px;
-    margin-bottom: 30px;
-    
+    margin: 0px 10px 30px 10px;
 }
 
 .switch-button::before{
@@ -168,8 +167,7 @@ a{
     width: 20px;
     height: 20px;
     border-radius: 30px;
-    margin: 2.5px;
-    margin: 3px;
+    margin: 2px;
     transition: 0.2s;
 }
 
@@ -208,7 +206,7 @@ a{
 .notif{
     text-align: center;
     position: relative;
-    background-color: red;
+    background-color: #E4401C;
     color: #fff;
     left: 60px;
     bottom: 15px;
