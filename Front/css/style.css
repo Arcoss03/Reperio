@@ -8,6 +8,8 @@
 body{
     font-family: 'Inter',sans-serif;
     font-weight: 400;
+    height: 100vh;
+    overflow: hidden;
 }
 
 a{
@@ -203,6 +205,16 @@ a{
 
 /* -------------------- -------------------- */
 
+/* -------------------- BACKGROUND -------------------- */
+
+.bg{
+   background-image: url(../img/bg-mbl.svg);
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position: bottom;
+}
+    /* -------------------- -------------------- */
+
 /* -------------------- BOUTONS LIKE/DISLIKE -------------------- */
 
 #dislike,#like{
@@ -297,7 +309,16 @@ a{
 
     /* -------------------- -------------------- */
 
-    /* -------------------- HEADER -------------------- */
+    /* -------------------- BACKGROUND -------------------- */
+
+    .bg{
+        height: 100vh;
+        background-image: url(../img/bg-dsktp.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+        overflow: hidden;
+    }
 
     /* -------------------- -------------------- */
 
