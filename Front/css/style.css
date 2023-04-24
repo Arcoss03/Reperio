@@ -192,7 +192,35 @@ a{
     border: 3px solid black;
     border-radius: 20px;
     background-color: grey;
-    margin-left: 100px;
+    cursor: pointer;
+}
+
+.message{
+    background-image: url(../img/msg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 70px;
+    width: 80px;
+    margin: 0px 30px 0px 100px;
+    cursor: pointer;
+}
+
+.notif{
+    text-align: center;
+    position: relative;
+    background-color: red;
+    color: #fff;
+    left: 60px;
+    bottom: 15px;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    padding: 2px;
+}
+
+.nb-notif{
+    font-size: 30px;
+    line-height: 36px;
 }
 
 .slide{
@@ -334,14 +362,17 @@ a{
     }
 
     .pdp{
-        margin-left: 500px;
         width: 100px;
-    height: 100px;
+        height: 100px;
     }
 
     .slide{
         height: 500px;
         width: 400px;
+    }
+
+    .message{
+        margin: 0px 30px 0px 500px;
     }
     
 }
