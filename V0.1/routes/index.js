@@ -39,7 +39,7 @@ router.post("/create", upload.single("photo"), (req, res) => {
           console.log("New user has been added");
 
           res.send(
-            `le compte à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a> ${req.file}`
+            `le compte à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
           );
         }
       );
