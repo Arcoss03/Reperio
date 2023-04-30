@@ -16,13 +16,13 @@
 </head>
 
 <body class="flex-column align-center margin-center margin-body-top">
-    <form class="flex-column margin-form" method="POST" action="/create">
+    <form class="flex-column margin-form" method="POST" action="/create" enctype="multipart/form-data">
         <input class="form-text margin-form-text" type="email" id="email" name="email" placeholder="Email" required>
         <input class="form-text margin-form-text" type="text" id="firstname" name="firstname" placeholder="Prénom" required>
         <input class="form-text margin-form-text" type="text" id="surname" name="surname" placeholder="Nom" required>
         <input class="form-text margin-form-text" type="password" id="password" name="password" placeholder="Mot de passe:" required>
         <input class="form-text margin-form-text" type="password" id="password2" name="password2" placeholder="Confirmer mot de passe:" required>
-        <input class="form-text margin-form-text" type="file" id="file" name="file" required>
+        <input class="form-text margin-form-text" type="file" id="photo" name="photo" required>
         <input class="submit-button" type="submit" value="S'enregister">
     </form>
     <a class="a-text" href="/">retour</a>
