@@ -6,7 +6,7 @@ const hashing = require("../config/hashing");
 
 // Route d'accueil du login dont le submit redirige vers /auth
 router.get("/", (req, res) => {
-  res.sendFile("index.html", { root: "public" });
+  res.sendFile("login.html", { root: "public" });
 });
 
 // Route de connexion
