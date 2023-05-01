@@ -4,9 +4,16 @@ const connection = require("../config/db");
 const path = require("path");
 const hashing = require("../config/hashing");
 
+// il ne peu y avoir qu'une erreur on affiche thrs errors dans le ejs mais "" n'affiche donc rien
+let errors = "";
+
 // Route d'accueil du login dont le submit redirige vers /auth
 router.get("/", (req, res) => {
-  res.sendFile("login.html", { root: "public" });
+  //res.sendFile("login.html", { root: "public" });
+  console.log(errors);
+  res.render("login", { errors: errors });
+  //on vde l'errors
+  errors = "";
 });
 
 // Route de connexion
@@ -26,16 +33,21 @@ router.post("/auth", (req, res) => {
           req.session.photo = results[0].photo;
           res.redirect("/home");
         } else {
-          res.send(
-            `Nom d\'utilisateur ou mot de passe incorrect! <a href="/"><button>retour</button></a>`
-          );
+          //   res.send(
+          //     `Nom d\'utilisateur ou mot de passe incorrect! <a href="/"><button>retour</button></a>`
+
+          //   );
+          errors = `Nom d\'utilisateur ou mot de passe incorrect!`;
+          res.redirect("/");
         }
       }
     );
   } else {
-    res.send(
-      `Veuillez saisir nom d'utilisateur et mot de passe! <a href="/"><button>Retour</button></a>`
-    );
+    // res.send(
+    //   `Veuillez saisir nom d'utilisateur et mot de passe! <a href="/"><button>Retour</button></a>`
+    // );
+    errors = `Veuillez saisir nom d'utilisateur et mot de passe!`;
+    res.redirect("/");
   }
 });
 

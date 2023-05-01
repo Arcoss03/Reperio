@@ -8,6 +8,7 @@ const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "public/uploads/" });
 
+//objet erreur qui se rempli des erreurs ewemple : errors.email
 let errors = {};
 
 const deleteFile = (filePath) => {
@@ -21,6 +22,8 @@ const deleteFile = (filePath) => {
 // Route de register dont le submit redirige vers /create
 router.get("/register", (req, res) => {
   res.render("register", { errors: errors });
+  //on vide les erreurs
+  errors = {};
 });
 
 //route de création de compte
@@ -31,9 +34,6 @@ router.post("/create", upload.single("photo"), (req, res) => {
   const surname = req.body.surname;
   const password = hashing(req.body.password);
   const password2 = hashing(req.body.password2);
-
-  //on vide les erreurs
-  errors = {};
 
   if (password !== password2) {
     errors.password = "Les deux mots de passe ne correspondent pas";

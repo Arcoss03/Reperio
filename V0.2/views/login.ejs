@@ -21,6 +21,9 @@
     <form class="flex-column margin-form" method="POST" action="/auth">
         <input class="form-text margin-form-text" type="email" name="email" id="email" placeholder="Email" required>
         <input class="form-text margin-form-text" type="password" name="password" id="password" placeholder="Mot de passe" required>
+        <% if (errors !== "") { %>
+            <p><%= errors %></p>
+        <% } %>
         <input class="submit-button" type="submit" id="submit" value="Se connecter">
     </form>
 
