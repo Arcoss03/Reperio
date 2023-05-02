@@ -9,6 +9,7 @@ const multer = require("multer");
 const upload = multer({ dest: "public/uploads/" });
 
 //objet erreur qui se rempli des erreurs ewemple : errors.email
+
 let errors = {};
 
 const deleteFile = (filePath) => {
@@ -27,6 +28,7 @@ router.get("/register", (req, res) => {
 });
 
 //route de création de compte
+// body ou session si ça bug
 router.post("/create", upload.single("photo"), (req, res) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const email = req.body.email;
