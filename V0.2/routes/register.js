@@ -8,10 +8,6 @@ const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "public/uploads/" });
 
-//objet erreur qui se rempli des erreurs ewemple : errors.email
-
-let errors = {};
-
 const deleteFile = (filePath) => {
   fs.unlink(filePath, (err) => {
     if (err) {
@@ -22,14 +18,14 @@ const deleteFile = (filePath) => {
 
 // Route de register dont le submit redirige vers /create
 router.get("/register", (req, res) => {
-  res.render("register", { errors: errors });
-  //on vide les erreurs
-  errors = {};
+  res.render("register", { errors: req.session.errors || {} });
+  //on vide les erreurs stockées dans la session
+  req.session.errors = {};
 });
 
 //route de création de compte
-// body ou session si ça bug
 router.post("/create", upload.single("photo"), (req, res) => {
+  req.session.errors = {};
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const email = req.body.email;
   const firstname = req.body.firstname;
@@ -38,22 +34,24 @@ router.post("/create", upload.single("photo"), (req, res) => {
   const password2 = hashing(req.body.password2);
 
   if (password !== password2) {
-    errors.password = "Les deux mots de passe ne correspondent pas";
+    console.log("lalalalalalal");
+    req.session.errors.password = "Les deux mots de passe ne correspondent pas";
+    console.log(req.session.errors.password, "testpass");
   }
 
   if (!emailRegex.test(email)) {
-    errors.email = "Adresse email invalide";
+    req.session.errors.email = "Adresse email invalide";
   }
 
   if (!firstname) {
-    errors.firstname = "Le champ Prénom est obligatoire";
+    req.session.errors.firstname = "Le champ Prénom est obligatoire";
   }
 
   if (!surname) {
-    errors.surname = "Le champ Nom de famille est obligatoire";
+    req.session.errors.surname = "Le champ Nom de famille est obligatoire";
   }
 
-  if (Object.keys(errors).length > 0) {
+  if (Object.keys(req.session.errors).length > 0) {
     // Supprimer le fichier uploadé en cas d'erreur
     deleteFile(req.file.path);
     // S'il y a des erreurs, on redirige vers la page de création de compte avec les erreurs
@@ -93,4 +91,5 @@ router.post("/create", upload.single("photo"), (req, res) => {
     );
   });
 });
+
 module.exports = router;
