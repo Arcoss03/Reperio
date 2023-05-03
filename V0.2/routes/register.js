@@ -19,12 +19,11 @@ const deleteFile = (filePath) => {
 // Route de register dont le submit redirige vers /create
 router.get("/register", (req, res) => {
   res.render("register", { errors: req.session.errors || {} });
-  //on vide les erreurs stockées dans la session
-  req.session.errors = {};
 });
 
 //route de création de compte
 router.post("/create", upload.single("photo"), (req, res) => {
+  //on vide les erreurs stockées dans la session
   req.session.errors = {};
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const email = req.body.email;
