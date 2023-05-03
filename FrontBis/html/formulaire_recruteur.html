@@ -16,19 +16,35 @@
 </head>
 <body class="flex-column align-center margin-center margin-body-top">
 
-    
-    <img class="logo-reperio" src="../img/reperio-index.svg" alt="Reperio" >
+    <header class="header-container flex-row align-end justify-spaceb">
+        <a href="index.html">
+            <img class="logo-reperio2" src="../img/reperio-index.svg" alt="Reperio">
+        </a>
+        <div class="text pointer" id="selectuser">Candidat</div>
+    </header>
+
 
     <!-- Arthur je te laisse gerer la method , l'action et les nom des input pour ton back  -->
     <form class="flex-column margin-form" action="">
         <input class="form-text margin-form-text" type="mail" name="mail" id="mail" placeholder="Email">
+        <input class="form-text margin-form-text" type="text" name="nom" id="nom" placeholder="nom de l'entreprise">
         <input class="form-text margin-form-text" type="password" name="password" id="password" placeholder="Mot de passe">
-        <input class="submit-button" type="submit" id="submit" value="Se connecter">
+        <input class="form-text margin-form-text" type="password" name="confirm-password" id="confirm-password" placeholder="Confirmer le mot de passe">
+        
+        <div class="justify-cont-center flex-row">
+            <div class="text">
+                Candidat
+            </div>
+            <div class="contour-switch" ><a class="switch switch2" href="formulaire_candidat.html"></a></div>
+            <div class="text">
+                Entreprise
+            </div>
+        </div>
+        
+        <input class="submit-button" type="submit" id="submit" value="S'inscrire">
     </form>
-
-    <a class="a-text text a-hover" href="formulaire_candidat.html">
-        Je n'ai pas de compte
-    </a>
+    <a class="a-text text a-hover" href="index.html">Retour a l'accueil</a>
+    
     
 </body>
 </html>
