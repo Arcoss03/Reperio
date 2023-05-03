@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" href="../img/web-icon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Reperio-register</title>
+</head>
+
+<body class="flex-column align-center margin-center margin-body-top">
+    <form class="flex-column margin-form" method="POST" action="/create" enctype="multipart/form-data">
+        <input class="form-text margin-form-text" type="email" id="email" name="email" placeholder="Email" required>
+        <% if (errors.email) { %>
+            <p><%= errors.email %></p>
+        <% } %>
+        <input class="form-text margin-form-text" type="text" id="firstname" name="firstname" placeholder="Prénom" required>
+        <% if (errors.firstname) { %>
+            <p><%= errors.firstname %></p>
+        <% } %>
+        <input class="form-text margin-form-text" type="text" id="surname" name="surname" placeholder="Nom" required>
+        <% if (errors.surname) { %>
+            <p><%= errors.surname %></p>
+        <% } %>
+        <input class="form-text margin-form-text" type="password" id="password" name="password" placeholder="Mot de passe:" required>
+        <input class="form-text margin-form-text" type="password" id="password2" name="password2" placeholder="Confirmer mot de passe:" required>
+        <% if (errors.password) { %>
+            <p><%= errors.password %></p>
+        <% } %>
+        <input class="form-text margin-form-text" type="file" id="photo" name="photo" accept="image/png, image/jpeg" required>
+        <input class="submit-button" type="submit" value="S'enregister">
+    </form>
+    <a class="a-text" href="/">retour</a>
+</body>
+
+</html>
