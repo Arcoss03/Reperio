@@ -5,12 +5,13 @@ const path = require("path");
 const testRouter = require("./routes/test");
 const adminRouter = require("./routes/admin");
 const loginRouter = require("./routes/login");
-const registerRouter = require("./routes/register");
+const register_c_Router = require("./routes/register-c");
+const register_e_Router = require("./routes/register-e");
 const requestRouter = require("./routes/request");
 const $ = require("jquery");
 
 const app = express();
-const PORT = "3003";
+const PORT = "3001";
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -26,7 +27,8 @@ app.use(
 
 app.use("/", testRouter);
 app.use("/", loginRouter);
-app.use("/", registerRouter);
+app.use("/", register_c_Router);
+app.use("/", register_e_Router);
 app.use("/admin", adminRouter);
 app.use("/", requestRouter);
 

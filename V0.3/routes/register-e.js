@@ -17,18 +17,18 @@ const deleteFile = (filePath) => {
 };
 
 // Route de register dont le submit redirige vers /create
-router.get("/register", (req, res) => {
-  res.render("register", { errors: req.session.errors || {} });
+router.get("/register-e", (req, res) => {
+  res.render("register-e", { errors: req.session.errors || {} });
 });
 
 //route de création de compte
-router.post("/create", upload.single("photo"), (req, res) => {
+router.post("/create-e", upload.single("photo"), (req, res) => {
   //on vide les erreurs stockées dans la session
   req.session.errors = {};
+  console.log("etape1");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const email = req.body.email;
-  const firstname = req.body.firstname;
-  const surname = req.body.surname;
+  const name = req.body.name;
   const password = hashing(req.body.password);
   const password2 = hashing(req.body.password2);
 
@@ -42,23 +42,18 @@ router.post("/create", upload.single("photo"), (req, res) => {
     req.session.errors.email = "Adresse email invalide";
   }
 
-  if (!firstname) {
+  if (!name) {
     req.session.errors.firstname = "Le champ Prénom est obligatoire";
-  }
-
-  if (!surname) {
-    req.session.errors.surname = "Le champ Nom de famille est obligatoire";
   }
 
   if (Object.keys(req.session.errors).length > 0) {
     // Supprimer le fichier uploadé en cas d'erreur
     deleteFile(req.file.path);
     // S'il y a des erreurs, on redirige vers la page de création de compte avec les erreurs
-    return res.redirect("/register");
+    return res.redirect("/register-e");
   }
-
   const fileExtension = path.extname(req.file.originalname);
-  const fileName = `${firstname}_${surname}_${Date.now()}${fileExtension}`;
+  const fileName = `${name}_${Date.now()}${fileExtension}`;
   const filePath = path.join(__dirname, "../public/uploads", fileName);
 
   // Renommer le fichier avant de le sauvegarder
@@ -67,24 +62,37 @@ router.post("/create", upload.single("photo"), (req, res) => {
       // Supprimer le fichier uploadé en cas d'erreur
       deleteFile(req.file.path);
       // S'il y a une erreur, on redirige vers la page de création de compte avec un message d'erreur
-      return res.redirect("/register");
+      return res.redirect("/register-e");
     }
 
-    connection.query(
-      `INSERT INTO users (email, firstname, surname, password, photo) 
-          VALUES ('${email}', '${firstname}', '${surname}', '${password}', '${fileName}');`,
+    connection.execute(
+      `INSERT INTO entreprise (nom_entreprise, email_entreprise, mdp_entreprise) VALUES (?, ?, ?);`,
+      [name, email, password],
       (error, results, fields) => {
         if (error) {
           // Supprimer le fichier uploadé en cas d'erreur
           deleteFile(filePath);
           // S'il y a une erreur, on redirige vers la page de création de compte avec un message d'erreur
-          return res.redirect("/register");
+          return res.redirect("/register-e");
         }
-        console.log(
-          `New user has been added -> ${email}, ${firstname}, ${surname}`
-        );
-        res.send(
-          `le compte ${email} à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
+        // Récupérer l'ID de l'entreprise nouvellement créée
+        const entrepriseId = results.insertId;
+        connection.execute(
+          `INSERT INTO fiche_poste (id_entreprise, chemin_fiche_poste) VALUES (?, ?);`,
+          [entrepriseId, filePath],
+          (error, results, fields) => {
+            if (error) {
+              // Supprimer le fichier uploadé en cas d'erreur
+              deleteFile(filePath);
+              // S'il y a une erreur, on redirige vers la page de création de compte avec un message d'erreur
+              return res.redirect("/register-e");
+            }
+
+            console.log(`New entreprise has been added -> ${email}, ${name}`);
+            res.send(
+              `le compte ${email} à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
+            );
+          }
         );
       }
     );
