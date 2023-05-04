@@ -258,7 +258,7 @@ ALTER TABLE `entreprise`
 --
 -- Constraints for table `fiche_poste`
 --
-ALTER TABLE `fiche.poste`
+ALTER TABLE `fiche_poste`
   ADD CONSTRAINT `fk_poste_domaine` FOREIGN KEY (`poste_domaine`) REFERENCES `domaine` (`id_domaine`),
   ADD CONSTRAINT `fk_poste_entreprise` FOREIGN KEY (`id_entreprise`) REFERENCES `entreprise` (`id_entreprise`),
   ADD CONSTRAINT `fk_poste_ville` FOREIGN KEY (`ville_poste`) REFERENCES `ville` (`id_ville`);
