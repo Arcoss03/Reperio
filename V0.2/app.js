@@ -6,6 +6,8 @@ const testRouter = require("./routes/test");
 const adminRouter = require("./routes/admin");
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
+const requestRouter = require("./routes/request");
+const $ = require("jquery");
 
 const app = express();
 const PORT = "3003";
@@ -26,6 +28,7 @@ app.use("/", testRouter);
 app.use("/", loginRouter);
 app.use("/", registerRouter);
 app.use("/admin", adminRouter);
+app.use("/", requestRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

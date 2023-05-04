@@ -23,6 +23,8 @@ router.post("/auth", (req, res) => {
       [email, password],
       (error, results, fields) => {
         if (results.length > 0) {
+          console.log(results);
+          req.session.user_id = results[0].user_id;
           req.session.loggedin = true;
           req.session.email = email;
           req.session.firstname = results[0].firstname;
@@ -51,6 +53,7 @@ router.post("/auth", (req, res) => {
 // Route d'accès après connexion réussie
 router.get("/home", (req, res) => {
   if (req.session.loggedin) {
+    console.log(req.session);
     res.render("home", {
       firstname: req.session.firstname,
       surname: req.session.surname,
