@@ -82,7 +82,7 @@ CREATE TABLE `entreprise` (
 -- Table structure for table `fiche_poste`
 --
 
-CREATE TABLE `fiche.poste` (
+CREATE TABLE `fiche_poste` (
   `id_poste` int(10) NOT NULL,
   `poste_domaine` int(10) DEFAULT NULL,
   `id_entreprise` int(10) NOT NULL,
