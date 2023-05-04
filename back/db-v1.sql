@@ -82,7 +82,7 @@ CREATE TABLE `entreprise` (
 -- Table structure for table `fiche_poste`
 --
 
-CREATE TABLE `fiche.poste` (
+CREATE TABLE `fiche_poste` (
   `id_poste` int(10) NOT NULL,
   `poste_domaine` int(10) DEFAULT NULL,
   `id_entreprise` int(10) NOT NULL,
@@ -258,7 +258,7 @@ ALTER TABLE `entreprise`
 --
 -- Constraints for table `fiche_poste`
 --
-ALTER TABLE `fiche.poste`
+ALTER TABLE `fiche_poste`
   ADD CONSTRAINT `fk_poste_domaine` FOREIGN KEY (`poste_domaine`) REFERENCES `domaine` (`id_domaine`),
   ADD CONSTRAINT `fk_poste_entreprise` FOREIGN KEY (`id_entreprise`) REFERENCES `entreprise` (`id_entreprise`),
   ADD CONSTRAINT `fk_poste_ville` FOREIGN KEY (`ville_poste`) REFERENCES `ville` (`id_ville`);
