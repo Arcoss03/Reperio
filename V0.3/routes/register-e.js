@@ -79,7 +79,7 @@ router.post("/create-e", upload.single("photo"), (req, res) => {
         const entrepriseId = results.insertId;
         connection.execute(
           `INSERT INTO fiche_poste (id_entreprise, chemin_fiche_poste) VALUES (?, ?);`,
-          [entrepriseId, filePath],
+          [entrepriseId, fileName],
           (error, results, fields) => {
             if (error) {
               // Supprimer le fichier uploadé en cas d'erreur

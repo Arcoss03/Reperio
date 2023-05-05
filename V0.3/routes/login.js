@@ -3,6 +3,7 @@ const router = express.Router();
 const connection = require("../config/db");
 const path = require("path");
 const hashing = require("../config/hashing");
+const session = require("express-session");
 
 // Route d'accueil du login dont le submit redirige vers /auth
 router.get("/", (req, res) => {
@@ -15,36 +16,50 @@ router.get("/", (req, res) => {
 router.post("/auth", (req, res) => {
   //on vide l'erreur
   req.session.errorLogin = undefined;
+  //on deconexte si il était deja conecté
+  req.session.user = {};
+
   const email = req.body.email;
   const password = hashing(req.body.password);
   if (email && password) {
-    connection.query(
-      "SELECT * FROM users WHERE email = ? AND password = ?",
+    connection.execute(
+      "SELECT * FROM candidat WHERE email_candidat = ? AND mdp_candidat = ?",
       [email, password],
       (error, results, fields) => {
         if (results.length > 0) {
           console.log(results);
-          req.session.user_id = results[0].user_id;
-          req.session.loggedin = true;
-          req.session.email = email;
-          req.session.firstname = results[0].firstname;
-          req.session.surname = results[0].surname;
-          req.session.photo = results[0].photo;
+          req.session.user.user_id = results[0].id_candidat;
+          req.session.user.loggedin = true;
+          req.session.user.email = email;
+          req.session.user.name = results[0].prenom_candidat;
+          req.session.user.surname = results[0].nom_candidat;
+          req.session.user.photo = results[0].chemin_cv_candidat;
+          req.session.user.status = "candidat";
           res.redirect("/home");
         } else {
-          //   res.send(
-          //     `Nom d\'utilisateur ou mot de passe incorrect! <a href="/"><button>retour</button></a>`
-
-          //   );
-          req.session.errorLogin = `Nom d\'utilisateur ou mot de passe incorrect!`;
-          res.redirect("/");
+          connection.execute(
+            "SELECT * FROM entreprise WHERE email_entreprise = ? AND mdp_entreprise = ?",
+            [email, password],
+            (error, results, fields) => {
+              if (results.length > 0) {
+                console.log(results);
+                req.session.user.user_id = results[0].id_entreprise;
+                req.session.user.loggedin = true;
+                req.session.user.email = email;
+                req.session.user.name = results[0].nom_entreprise;
+                req.session.user.status = "entreprise";
+                console.log(req.session.user);
+                res.redirect("/home");
+              } else {
+                req.session.errorLogin = `Nom d\'utilisateur ou mot de passe incorrect!`;
+                res.redirect("/");
+              }
+            }
+          );
         }
       }
     );
   } else {
-    // res.send(
-    //   `Veuillez saisir nom d'utilisateur et mot de passe! <a href="/"><button>Retour</button></a>`
-    // );
     req.session.errorLogin = `Veuillez saisir nom d'utilisateur et mot de passe!`;
     res.redirect("/");
   }
@@ -52,12 +67,10 @@ router.post("/auth", (req, res) => {
 
 // Route d'accès après connexion réussie
 router.get("/home", (req, res) => {
-  if (req.session.loggedin) {
-    console.log(req.session);
+  if (req.session.user.loggedin) {
+    console.log(req.session.user);
     res.render("home", {
-      firstname: req.session.firstname,
-      surname: req.session.surname,
-      photo: req.session.photo,
+      name: req.session.user.name,
     });
   } else {
     res.redirect("/");
