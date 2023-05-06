@@ -55,6 +55,7 @@ router.post("/request/like", function (req, res) {
 
     if (req.session.user && req.session.user.loggedin) {
       //on test si on est chez un candidat ou entreprise
+      console.log(req.session.user.status);
 
       if (req.session.user.status === "candidat") {
         id_candidat = req.session.user.user_id;
@@ -62,19 +63,21 @@ router.post("/request/like", function (req, res) {
         req_sql =
           "INSERT INTO relation (id_candidat, id_entreprise, like_candidat) VALUES (?, ?, ?)";
       } else if (req.session.user.status === "entreprise") {
+        console.log("test1");
         id_candidat = req.body.other_id;
         id_entreprise = req.session.user.user_id;
         req_sql =
-          "INSERT INTO relation (id_candidat, id_entreprise, like_candidat) VALUES (?, ?, ?)";
+          "INSERT INTO relation (id_candidat, id_entreprise, like_entreprise) VALUES (?, ?, ?)";
       }
-      //on insert le like dans la table relation
+      console.log(req_sql);
+      //on insert le like dans la table relation ça marche pas pck je dois tester que ralation existe pas deja et si oui je dois juste update
 
       connection.execute(
         req_sql,
         [id_candidat, id_entreprise, 1],
         (error, results, fields) => {
           if (error) {
-            console.log("profil liké");
+            console.log("profil likééééé");
           } else {
             console.log("il y avait déja un like");
           }
