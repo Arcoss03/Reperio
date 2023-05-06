@@ -1,31 +1,63 @@
 //variables globales
 let tabId = [];
-let tabChoice = 0;
 let image = document.getElementById("imm-slide");
 
 function load() {
   console.log("fonction load");
-  getIdTab(function (data) {
-    console.log(data); // on utilise ici la réponse AJAX retournée
+  // initialisation de tabId
+  updateTabId(function (data) {
+    console.log(data);
     tabId = data;
+    image.setAttribute("src", `../uploads/${tabId[0].photo}`);
   });
 
-  like.addEventListener("click", function () {
-    document.getElementById("imm-slide");
-    console.log(tabId[tabChoice].photo);
-    image.setAttribute("src", `../uploads/${tabId[tabChoice].photo}`);
-    tabChoice++;
+  likeButton.addEventListener("click", function () {
+    console.log(tabId[0].photo);
+    isLiked();
+
+    tabId = supprimerElement(tabId);
+    if (tabId.length === 0) {
+      updateTabId(function (data) {
+        console.log(data);
+        tabId = data;
+        if (tabId.length > 0) {
+          image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+        }
+      });
+    } else {
+      image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+    }
+    console.log(tabId);
   });
 }
 
-function getIdTab(callback) {
-  msg = "SELECT user_id, photo FROM `users`";
+function supprimerElement(tab) {
+  //on supr l'élement 0 de la liste
+  tab.splice(0, 1);
+  return tab;
+}
+// fonction pour mettre à jour tabId
+function updateTabId(callback) {
   $.ajax({
     type: "POST",
-    url: "hello",
-    data: { message: msg },
+    url: "/request/getidtab",
+    data: { message: "LISTE_ID" },
     success: function (response) {
       callback(response); // appel de la fonction de rappel avec la réponse en paramètre
+    },
+    error: function () {
+      console.log("Erreur lors de la requête AJAX");
+    },
+  });
+}
+
+function isLiked() {
+  $.ajax({
+    type: "POST",
+    url: "/request/like",
+    data: { message: "IS_LIKED", other_id: tabId[0].other_id },
+    success: function (response) {
+      console.log(response); //confirmation de truc liké
     },
     error: function () {
       console.log("Erreur lors de la requête AJAX");

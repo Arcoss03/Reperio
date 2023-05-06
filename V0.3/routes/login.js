@@ -31,8 +31,7 @@ router.post("/auth", (req, res) => {
           req.session.user.user_id = results[0].id_candidat;
           req.session.user.loggedin = true;
           req.session.user.email = email;
-          req.session.user.name = results[0].prenom_candidat;
-          req.session.user.surname = results[0].nom_candidat;
+          req.session.user.name = `${results[0].prenom_candidat}-${results[0].nom_candidat}`;
           req.session.user.photo = results[0].chemin_cv_candidat;
           req.session.user.status = "candidat";
           res.redirect("/home");
@@ -67,7 +66,7 @@ router.post("/auth", (req, res) => {
 
 // Route d'accès après connexion réussie
 router.get("/home", (req, res) => {
-  if (req.session.user.loggedin) {
+  if (req.session.user && req.session.user.loggedin) {
     console.log(req.session.user);
     res.render("home", {
       name: req.session.user.name,
