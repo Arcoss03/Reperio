@@ -66,8 +66,8 @@ router.post("/create-e", upload.single("photo"), (req, res) => {
     }
 
     connection.execute(
-      `INSERT INTO entreprise (nom_entreprise, email_entreprise, mdp_entreprise) VALUES (?, ?, ?);`,
-      [name, email, password],
+      `INSERT INTO entreprise (nom_entreprise, email_entreprise, mdp_entreprise, chemin_fiche_poste) VALUES (?, ?, ?, ?);`,
+      [name, email, password, fileName],
       (error, results, fields) => {
         if (error) {
           // Supprimer le fichier uploadé en cas d'erreur
@@ -75,24 +75,9 @@ router.post("/create-e", upload.single("photo"), (req, res) => {
           // S'il y a une erreur, on redirige vers la page de création de compte avec un message d'erreur
           return res.redirect("/register-e");
         }
-        // Récupérer l'ID de l'entreprise nouvellement créée
-        const entrepriseId = results.insertId;
-        connection.execute(
-          `INSERT INTO fiche_poste (id_entreprise, chemin_fiche_poste) VALUES (?, ?);`,
-          [entrepriseId, fileName],
-          (error, results, fields) => {
-            if (error) {
-              // Supprimer le fichier uploadé en cas d'erreur
-              deleteFile(filePath);
-              // S'il y a une erreur, on redirige vers la page de création de compte avec un message d'erreur
-              return res.redirect("/register-e");
-            }
-
-            console.log(`New entreprise has been added -> ${email}, ${name}`);
-            res.send(
-              `le compte ${email} à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
-            );
-          }
+        console.log(`New user has been added -> ${email}, ${name}`);
+        res.send(
+          `le compte ${email} à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
         );
       }
     );

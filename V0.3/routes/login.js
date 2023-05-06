@@ -8,7 +8,7 @@ const session = require("express-session");
 // Route d'accueil du login dont le submit redirige vers /auth
 router.get("/", (req, res) => {
   //res.sendFile("login.html", { root: "public" });
-  console.log("errors login ->", req.session.errorLogin);
+  //console.log("errors login ->", req.session.errorLogin);
   res.render("login", { errors: req.session.errorLogin });
 });
 
@@ -27,13 +27,15 @@ router.post("/auth", (req, res) => {
       [email, password],
       (error, results, fields) => {
         if (results.length > 0) {
-          console.log(results);
+          //console.log(results);
           req.session.user.user_id = results[0].id_candidat;
           req.session.user.loggedin = true;
           req.session.user.email = email;
           req.session.user.name = `${results[0].prenom_candidat}-${results[0].nom_candidat}`;
           req.session.user.photo = results[0].chemin_cv_candidat;
           req.session.user.status = "candidat";
+          console.log(`connexion au compte ${email} réussie`);
+
           res.redirect("/home");
         } else {
           connection.execute(
@@ -41,13 +43,14 @@ router.post("/auth", (req, res) => {
             [email, password],
             (error, results, fields) => {
               if (results.length > 0) {
-                console.log(results);
+                //console.log(results);
                 req.session.user.user_id = results[0].id_entreprise;
                 req.session.user.loggedin = true;
                 req.session.user.email = email;
                 req.session.user.name = results[0].nom_entreprise;
                 req.session.user.status = "entreprise";
-                console.log(req.session.user);
+                //console.log(req.session.user);
+                console.log(`connexion au compte ${email} réussie`);
                 res.redirect("/home");
               } else {
                 req.session.errorLogin = `Nom d\'utilisateur ou mot de passe incorrect!`;
@@ -67,7 +70,7 @@ router.post("/auth", (req, res) => {
 // Route d'accès après connexion réussie
 router.get("/home", (req, res) => {
   if (req.session.user && req.session.user.loggedin) {
-    console.log(req.session.user);
+    //console.log(req.session.user);
     res.render("home", {
       name: req.session.user.name,
     });

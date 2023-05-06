@@ -22,7 +22,7 @@ router.post("/request/getidtab", function (req, res) {
   if (message === "LISTE_ID") {
     if (req.session.user.status === "candidat") {
       req_sql =
-        "SELECT id_entreprise as other_id, chemin_fiche_poste as photo FROM fiche_poste NATURAL JOIN entreprise";
+        "SELECT id_entreprise as other_id, chemin_fiche_poste as photo FROM entreprise";
     } else if (req.session.user.status === "entreprise") {
       req_sql =
         "SELECT id_candidat as other_id, chemin_cv_candidat as photo FROM candidat";
@@ -44,7 +44,7 @@ router.post("/request/like", function (req, res) {
   let id_candidat = "";
   let id_entreprise = "";
   console.log("tab->");
-  console.log(tab);
+  console.log(req.body);
   //on test si on est chez un candidat ou entreprise
 
   console.log("message:", message);
@@ -73,8 +73,8 @@ router.post("/request/like", function (req, res) {
         req_sql,
         [id_candidat, id_entreprise, 1],
         (error, results, fields) => {
-          if (results.length > 0) {
-            res.send(results);
+          if (error) {
+            console.log("profil liké");
           } else {
             console.log("il y avait déja un like");
           }
