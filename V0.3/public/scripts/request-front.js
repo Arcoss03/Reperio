@@ -8,7 +8,11 @@ function load() {
   updateTabId(function (data) {
     console.log(data);
     tabId = data;
-    image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+    if (tabId.length === 0) {
+      image.setAttribute("src", "../img/no_result.jpg");
+    } else {
+      image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+    }
   });
 
   //bouton like
@@ -23,6 +27,8 @@ function load() {
         tabId = data;
         if (tabId.length > 0) {
           image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+        } else {
+          image.setAttribute("src", "../img/no_result.jpg");
         }
       });
     } else {
@@ -42,6 +48,8 @@ function load() {
         tabId = data;
         if (tabId.length > 0) {
           image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+        } else {
+          image.setAttribute("src", "../img/no_result.jpg");
         }
       });
     } else {

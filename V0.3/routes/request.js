@@ -22,19 +22,24 @@ router.post("/request/getidtab", function (req, res) {
   if (message === "LISTE_ID") {
     if (req.session.user.status === "candidat") {
       req_sql =
-        "SELECT id_entreprise as other_id, chemin_fiche_poste as photo FROM entreprise";
+        "SELECT entreprise.id_entreprise AS other_id, entreprise.chemin_fiche_poste AS photo FROM entreprise LEFT JOIN relation ON entreprise.id_entreprise = relation.id_entreprise AND relation.id_candidat = ? WHERE (relation.like_entreprise IS NULL AND relation.like_candidat IS NULL) OR (relation.like_candidat IS NULL AND relation.like_entreprise = 1)";
     } else if (req.session.user.status === "entreprise") {
       req_sql =
-        "SELECT id_candidat as other_id, chemin_cv_candidat as photo FROM candidat";
+        "SELECT candidat.id_candidat AS other_id, candidat.chemin_cv_candidat AS photo FROM candidat LEFT JOIN relation ON candidat.id_candidat = relation.id_candidat AND relation.id_entreprise = ? WHERE (relation.like_entreprise IS NULL AND relation.like_candidat IS NULL) OR (relation.like_entreprise IS NULL AND relation.like_candidat = 1)";
     }
     if (req.session.user && req.session.user.loggedin) {
-      connection.execute(req_sql, (error, results, fields) => {
-        if (results.length > 0) {
-          res.send(results);
-        } else {
-          console.log("erreur, pas de resultats db");
+      connection.execute(
+        req_sql,
+        [req.session.user.user_id],
+        (error, results, fields) => {
+          if (results.length > 0) {
+            res.send(results);
+          } else {
+            res.send(results);
+            console.log("pas de resultats db");
+          }
         }
-      });
+      );
     }
   }
 });
