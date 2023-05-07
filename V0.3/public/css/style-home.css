@@ -19,6 +19,8 @@ a{
 .slide {
     width: 324px;
     height: 457px;
+    border-radius: 20px;
+    border: solid #1A1A1A 4px;
 }
 .button-cont {
     display: flex;

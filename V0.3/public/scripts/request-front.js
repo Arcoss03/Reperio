@@ -9,7 +9,7 @@ function load() {
     console.log(data);
     tabId = data;
     if (tabId.length === 0) {
-      image.setAttribute("src", "../img/no_result.jpg");
+      image.setAttribute("src", "../img/no_result.gif");
     } else {
       image.setAttribute("src", `../uploads/${tabId[0].photo}`);
     }
@@ -28,7 +28,7 @@ function load() {
         if (tabId.length > 0) {
           image.setAttribute("src", `../uploads/${tabId[0].photo}`);
         } else {
-          image.setAttribute("src", "../img/no_result.jpg");
+          image.setAttribute("src", "../img/no_result.gif");
         }
       });
     } else {
@@ -49,7 +49,7 @@ function load() {
         if (tabId.length > 0) {
           image.setAttribute("src", `../uploads/${tabId[0].photo}`);
         } else {
-          image.setAttribute("src", "../img/no_result.jpg");
+          image.setAttribute("src", "../img/no_result.gif");
         }
       });
     } else {
