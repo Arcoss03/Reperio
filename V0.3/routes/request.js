@@ -61,15 +61,14 @@ router.post("/request/like", function (req, res) {
         id_candidat = req.session.user.user_id;
         id_entreprise = req.body.other_id;
         req_sql =
-          "INSERT INTO relation (id_candidat, id_entreprise, like_candidat) VALUES (?, ?, ?)";
+          "INSERT INTO relation (id_candidat, id_entreprise, like_candidat) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_candidat = 1";
       } else if (req.session.user.status === "entreprise") {
         console.log("test1");
         id_candidat = req.body.other_id;
         id_entreprise = req.session.user.user_id;
         req_sql =
-          "INSERT INTO relation (id_candidat, id_entreprise, like_entreprise) VALUES (?, ?, ?)";
+          "INSERT INTO relation (id_candidat, id_entreprise, like_entreprise) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_entreprise = 1";
       }
-      console.log(req_sql);
       //on insert le like dans la table relation ça marche pas pck je dois tester que ralation existe pas deja et si oui je dois juste update
 
       connection.execute(
@@ -77,18 +76,18 @@ router.post("/request/like", function (req, res) {
         [id_candidat, id_entreprise, 1],
         (error, results, fields) => {
           if (error) {
-            console.log("profil likééééé");
+            console.log("erreur db");
           } else {
-            console.log("il y avait déja un like");
+            console.log("profil update like");
+            res.send("profil liké");
           }
         }
       );
-      res.send("profil liké");
       //on créé un match si id candidat et id entreprise sont liké mutuelement
 
       connection.execute(
-        "SELECT * FROM `relation` WHERE id_candidat = 1 AND id_entreprise = 8",
-        [id_candidat, id_entreprise, 1],
+        "SELECT * FROM `relation` WHERE id_candidat = ? AND id_entreprise = ?",
+        [id_candidat, id_entreprise],
         (error, results, fields) => {
           if (results.length > 0) {
             if (
@@ -97,7 +96,7 @@ router.post("/request/like", function (req, res) {
             ) {
               //on créé le match
               connection.execute(
-                "INSERT INTO match (id_candidat, id_entreprise) VALUES (?, ?)",
+                "INSERT INTO `match` (id_candidat, id_entreprise) VALUES (?, ?)",
                 [id_candidat, id_entreprise]
               ),
                 (error, results, fields) => {
@@ -106,6 +105,56 @@ router.post("/request/like", function (req, res) {
             }
           } else {
             console.log("pas de match créé");
+          }
+        }
+      );
+    }
+  } else {
+    res.send("Je ne comprends pas");
+  }
+});
+
+router.post("/request/dislike", function (req, res) {
+  const message = req.body.message;
+  let id_candidat = "";
+  let id_entreprise = "";
+  console.log("tab->");
+  console.log(req.body);
+  //on test si on est chez un candidat ou entreprise
+
+  console.log("message:", message);
+  //on test la bonne recetion du message ajax
+
+  if (message === "IS_DISLIKED") {
+    //on teste que l'utilisateur est bien conecté
+
+    if (req.session.user && req.session.user.loggedin) {
+      //on test si on est chez un candidat ou entreprise
+      console.log(req.session.user.status);
+
+      if (req.session.user.status === "candidat") {
+        id_candidat = req.session.user.user_id;
+        id_entreprise = req.body.other_id;
+        req_sql =
+          "INSERT INTO relation (id_candidat, id_entreprise, like_candidat) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_candidat = 0";
+      } else if (req.session.user.status === "entreprise") {
+        console.log("test1");
+        id_candidat = req.body.other_id;
+        id_entreprise = req.session.user.user_id;
+        req_sql =
+          "INSERT INTO relation (id_candidat, id_entreprise, like_entreprise) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_entreprise = 0";
+      }
+      //on insert le like dans la table relation ça marche pas pck je dois tester que ralation existe pas deja et si oui je dois juste update
+
+      connection.execute(
+        req_sql,
+        [id_candidat, id_entreprise, 0],
+        (error, results, fields) => {
+          if (error) {
+            console.log("erreur db");
+          } else {
+            console.log("profil update dislike");
+            res.send("profil disliké");
           }
         }
       );

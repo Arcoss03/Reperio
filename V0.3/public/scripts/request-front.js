@@ -11,9 +11,29 @@ function load() {
     image.setAttribute("src", `../uploads/${tabId[0].photo}`);
   });
 
+  //bouton like
   likeButton.addEventListener("click", function () {
     console.log(tabId[0].photo);
     isLiked();
+
+    tabId = supprimerElement(tabId);
+    if (tabId.length === 0) {
+      updateTabId(function (data) {
+        console.log(data);
+        tabId = data;
+        if (tabId.length > 0) {
+          image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+        }
+      });
+    } else {
+      image.setAttribute("src", `../uploads/${tabId[0].photo}`);
+    }
+    console.log(tabId);
+  });
+  //bouton dislike
+  dislikeButton.addEventListener("click", function () {
+    console.log(tabId[0].photo);
+    isDisliked();
 
     tabId = supprimerElement(tabId);
     if (tabId.length === 0) {
@@ -58,6 +78,20 @@ function isLiked() {
     data: { message: "IS_LIKED", other_id: tabId[0].other_id },
     success: function (response) {
       console.log(response); //confirmation de truc liké
+    },
+    error: function () {
+      console.log("Erreur lors de la requête AJAX");
+    },
+  });
+}
+
+function isDisliked() {
+  $.ajax({
+    type: "POST",
+    url: "/request/dislike",
+    data: { message: "IS_DISLIKED", other_id: tabId[0].other_id },
+    success: function (response) {
+      console.log(response); //confirmation de message disliké
     },
     error: function () {
       console.log("Erreur lors de la requête AJAX");
