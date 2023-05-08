@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -19,18 +19,35 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body class="">
-    <h1>Bonjour
-        <span class="name">
-            <%= name %>
-        </span>
-    </h1>
-    <img id="imm-slide" class="slide" src="../img/loading.gif" alt="">
-    <div class="button-cont">
-        <button id="dislikeButton" class="button">dislike</button>
-        <button id="likeButton" class="button like ">like</button>
+
+
+
+<body>
+    <div class="container">
+
+        <a href="/">
+            <img class="logo-reperio2" src="../img/reperio-index.svg" alt="Reperio">
+        </a>
+        <div class="slider">
+            <img id="imm-slide" class="slide" src="../img/no_result.jpg" alt="">
+            <div class="button-cont">
+                <button id="dislikeButton" class="button"></button>
+                <button id="likeButton" class="button like "></button>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="message" id="message">
+                <div class="notif">
+                    <span class="nb-notif">1</span>
+                </div>
+            </div>
+            <div>
+                <img class="pdp " src="../img/pp.svg" alt="">
+                <h1 class="name"><%= name %></h1>
+            </div>
+        </div>  
     </div>
-    <a href="/">retour</a>
 </body>
+
 
 </html>
