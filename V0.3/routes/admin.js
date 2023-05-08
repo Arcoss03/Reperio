@@ -16,13 +16,13 @@ router.post("/auth", (req, res) => {
   const password = hashing(req.body.password);
   if (username && password) {
     connection.query(
-      "SELECT * FROM admins WHERE username = ? AND password = ?",
+      "SELECT * FROM admin WHERE nom_admin = ? AND mdp_admin = ?",
       [username, password],
       (error, results, fields) => {
         if (results.length > 0) {
           req.session.loggedin = true;
           req.session.username = username;
-          res.redirect("/admin/crud");
+          res.redirect("/admin/crud/c");
         } else {
           res.send(
             `Nom d\'utilisateur ou mot de passe incorrect! <a href="/admin"><button>retour</button></a>`
@@ -39,13 +39,26 @@ router.post("/auth", (req, res) => {
 
 // Route d'accès après connexion réussie
 
-router.get("/crud", (req, res) => {
+router.get("/crud/c", (req, res) => {
   if (req.session.loggedin) {
     connection.query(
-      "SELECT id, email, firstname, surname FROM users",
+      "SELECT id_candidat, email_candidat, prenom_candidat, nom_candidat FROM candidat",
       (error, results, fields) => {
         if (error) throw error;
-        res.render("crud", { users: results });
+        res.render("crud-c", { candidat: results });
+      }
+    );
+  } else {
+    res.redirect("/");
+  }
+});
+router.get("/crud/e", (req, res) => {
+  if (req.session.loggedin) {
+    connection.query(
+      "SELECT id_entreprise, email_entreprise, nom_entreprise FROM entreprise",
+      (error, results, fields) => {
+        if (error) throw error;
+        res.render("crud-e", { entreprise: results });
       }
     );
   } else {

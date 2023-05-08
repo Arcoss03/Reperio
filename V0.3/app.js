@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
-const testRouter = require("./routes/test");
+const homeRouter = require("./routes/home");
 const adminRouter = require("./routes/admin");
 const loginRouter = require("./routes/login");
 const register_c_Router = require("./routes/register-c");
@@ -25,7 +25,7 @@ app.use(
   })
 );
 
-app.use("/", testRouter);
+app.use("/", homeRouter);
 app.use("/", loginRouter);
 app.use("/", register_c_Router);
 app.use("/", register_e_Router);

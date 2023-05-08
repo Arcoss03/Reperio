@@ -251,5 +251,9 @@ a{
 .error {
     color: rgb(207, 15, 15);
     padding-top: 3px;
-    
+}
+
+.text-success {
+    margin: 30px 0;
+    font-size: 30px;
 }

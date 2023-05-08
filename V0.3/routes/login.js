@@ -67,15 +67,4 @@ router.post("/auth", (req, res) => {
   }
 });
 
-// Route d'accès après connexion réussie
-router.get("/home", (req, res) => {
-  if (req.session.user && req.session.user.loggedin) {
-    //console.log(req.session.user);
-    res.render("home", {
-      name: req.session.user.name,
-    });
-  } else {
-    res.redirect("/");
-  }
-});
 module.exports = router;

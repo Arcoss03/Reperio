@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Liste des utilisateurs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i=0; i < entreprise.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= entreprise[i].id_entreprise %>
+                    </td>
+                    <td>
+                        <%= entreprise[i].email_entreprise %>
+                    </td>
+                    <td>
+                        <%= entreprise[i].nom_entreprise %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+    <br>
+    <a href="/admin/crud/c"><button>liste entreprises</button></a>
+    <br> 
+    <a href="/"><button>retour</button></a>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" href="../img/web-icon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style-home.css">
+    <title>Liste Match</title>
+</head>
+
+<body>
+    <div class="match-container">
+        <a href="/home" class="match-link">retour a l'app</a>
+        <% if (match.length === 0) { %>
+            <p class="no-match">Pas de match</p>
+          <% } else { %>
+            <table>
+              <tbody class="tbody">
+                <% for (let i=0; i < match.length; i++) { %>
+                  <tr class="tr">
+                    <td class="td">
+                      <%= match[i].name %>
+                    </td>
+                    <td>
+                      <%= match[i].email %>
+                    </td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          <% } %>
+    </div>
+</body>
+
+</html>

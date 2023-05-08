@@ -33,9 +33,7 @@ router.post("/create-e", upload.single("photo"), (req, res) => {
   const password2 = hashing(req.body.password2);
 
   if (password !== password2) {
-    console.log("lalalalalalal");
     req.session.errors.password = "Les deux mots de passe ne correspondent pas";
-    console.log(req.session.errors.password, "testpass");
   }
 
   if (!emailRegex.test(email)) {
@@ -76,9 +74,8 @@ router.post("/create-e", upload.single("photo"), (req, res) => {
           return res.redirect("/register-e");
         }
         console.log(`New user has been added -> ${email}, ${name}`);
-        res.send(
-          `le compte ${email} à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
-        );
+        //message de confirmation de création de compte
+        res.render("success", { compte: email });
       }
     );
   });
