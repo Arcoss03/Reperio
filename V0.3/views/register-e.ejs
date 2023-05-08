@@ -19,16 +19,16 @@
     <form class="flex-column margin-form" method="POST" action="/create-e" enctype="multipart/form-data">
         <input class="form-text margin-form-text" type="email" id="email" name="email" placeholder="Email" required>
         <% if (errors.email) { %>
-            <p><%= errors.email %></p>
+            <p class="error"><%= errors.email %></p>
         <% } %>
         <input class="form-text margin-form-text" type="text" id="name" name="name" placeholder="Nom de l'entreprise" required>
         <% if (errors.name) { %>
-            <p><%= errors.name %></p>
+            <p class="error"><%= errors.name %></p>
         <% } %>
         <input class="form-text margin-form-text" type="password" id="password" name="password" placeholder="Mot de passe:" required>
         <input class="form-text margin-form-text" type="password" id="password2" name="password2" placeholder="Confirmer mot de passe:" required>
         <% if (errors.password) { %>
-            <p><%= errors.password %></p>
+            <p class="error"><%= errors.password %></p>
         <% } %>
         <input class="form-text margin-form-text" type="file" id="photo" name="photo" accept="image/png, image/jpeg" required>
         <div class="justify-cont-center flex-row div-switch2">
