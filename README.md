@@ -1,42 +1,40 @@
----
+# Reperio
 
-auteurs:
-FRIN Arthur
-BRETON Alexis
-CHARPIGNON Nicolas
-Kerviche Clément
+## Auteurs
 
----
+- Arthur Frin
+- Alexis Breton
+- Nicolas Charpignon
+- Clément Kerviche
 
-projet annuel:
-Reperio est une app web qui vise mettre en relation des candidats et des entreprises pour qu'elles puissent collaborer
+## Projet annuel
 
----
+Reperio est une application web qui vise à connecter des demandeurs d'emploi avec des entreprises pour qu'il puissent facilement collaborer.
 
-features:
-un slider pour liker ou non des candidats
-un login
-un register
-affichage de la liste des match
+## Fonctionnalités
 
----
+- Un admin pour voir les utilisateurs
+- Un slider pour aimer ou ne pas aimer les candidats
+- Connexion a l'app
+- Inscription
+- Affichage de la liste des matchs
 
-comment faire fonctioner l'app:
-Nous n'avons pas pu mettre l'app en service car
--manque de compétence en réseau
--cout d'hebergement/nom de domaine
+## Comment faire fonctionner l'application
 
-## 1:
+Nous n'avons pas pu déployer l'application en raison de :
 
-il faut inclure la base de donnée (fichier sql dans le dossier base data-base)
-sur une data-base (sois serveur soit en local exemple avec phpmyadmin)
+- Un manque de compétences en réseau
+- Les coûts d'hébergement/nom de domaine
 
-## 2:
+### Étape 1 : Inclure la base de données
 
-il faut modifier dans V0.1/config/db.js les information de connexion la base de donné par les votres: nom de la db, url, user, mot de passe et port sur lequel tourne la db
+Vous devez inclure la base de données (fichier SQL dans le dossier "base data-base") sur une base de données (soit sur un serveur, soit en local, par exemple avec PHPMyAdmin).
 
-exemple:
--->
+### Étape 2 : Modifier les informations de connexion
+
+Vous devez modifier les informations de connexion à la base de données dans V0.1/config/db.js pour correspondre à votre base de données : nom de la base de données, URL, utilisateur, mot de passe et port.
+
+Exemple :
 
 const connection = mysql.createConnection({
 host: "localhost",
@@ -46,24 +44,23 @@ password: "root",
 database: "db-reperio-v1",
 });
 
----
+### Étape 3 : Lancer le serveur
 
-## 3:
+Après avoir modifié les informations de connexion à la base de données, exécutez le serveur en accédant à V1.0 dans un terminal et en exécutant la commande "npm start". L'adresse de l'application sera affichée dans le terminal.
 
-il faut enssuite lancer le serveur en allans avec un terminal dans V0.1 et lancer la commande npm start
+## Résolution des problèmes
 
-l'adresse de l'app sera affichée dans le terminal
+Si le port que vous utilisez est déjà utilisé, une erreur peut se produire.
 
-## piste d'erreur:
+## Conseils
 
-erreur de port, si votre port ou celui de la base de donné est déja utilisé
+- Le dossier "Bank-photo" fournit des images de CV et de descriptions de poste.
+- Pour accéder à la page d'administration, accédez à l'URL /admin.
+  utilisateur: "admin"
+  mot de passe: "admin"
 
-## tips:
+- Les entreprises et les candidats sont déjà dans la base de données. Tous les mots de passe sont les mêmes:
 
-le dossier Bank-photo met a disposition des images de CV et fiches de poste
+mot de passe des utilisateurs: "test"
 
-pour acceder a l'admin aller a l'url /admin
-les mots de passe de l'admin et l'utilisateur sont admin admin
-
-des entreprises et candidats sont déja dans la base de donné
-tous les mots de passe sont identiques --> test (ils sont enssuite hachés part le serveur et le hachage est stoké en db)
+(ils sont ensuite hachés par le serveur et stockés dans la base de données).
