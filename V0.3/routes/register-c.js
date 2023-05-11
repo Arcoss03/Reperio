@@ -83,9 +83,6 @@ router.post("/create-c", upload.single("photo"), (req, res) => {
         console.log(
           `New user has been added -> ${email}, ${firstname}, ${surname}`
         );
-        // res.send(
-        //   `le compte ${email} à bien été enregistré <a href="/"><button>retour à la page de connexion</button></a>`
-        // );
         res.render("success", { compte: email });
       }
     );

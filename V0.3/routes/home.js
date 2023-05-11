@@ -42,3 +42,15 @@ router.get("/home/match", (req, res) => {
   }
 });
 module.exports = router;
+
+router.get("/home/settings", (req, res) => {
+  if (req.session.user && req.session.user.loggedin) {
+    //console.log(req.session.user);
+    // res.render("home", {
+    //   name: req.session.user.name,
+    // });
+    res.sendFile(__dirname + "/../public/settings.html");
+  } else {
+    res.redirect("/");
+  }
+});
