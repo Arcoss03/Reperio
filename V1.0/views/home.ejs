@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" href="../img/web-icon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style-home.css">
+    <title>Reperio</title>
+    <script src="scripts/request-front.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+
+
+<body>
+    <div class="container">
+
+        <a href="/">
+            <img class="logo-reperio2" src="../img/reperio-index.svg" alt="Reperio">
+        </a>
+        <div class="slider">
+            <img id="imm-slide" class="slide" src="../img/loading.gif" alt="">
+            <div class="button-cont">
+                <button id="dislikeButton" class="button"></button>
+                <button id="likeButton" class="button like "></button>
+            </div>
+        </div>
+        <div class="right-container">
+            <a href="/home/match">
+                <div class="message" id="message">
+                    <div class="notif">
+                        <span class="nb-notif">1</span>
+                    </div>
+                </div>
+            </a>
+            <div>
+                <img class="pdp" src="../img/pp.svg" alt="">
+                <h1 class="name"><%= name %></h1>
+            </div>
+        </div>
+        </div>  
+    </div>
+</body>
+
+
+</html>

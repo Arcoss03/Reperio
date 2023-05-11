@@ -1,0 +1,259 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+}
+
+a{
+    text-decoration: none;
+}
+
+.relative-choice{
+    position: relative;
+    bottom: 75px;
+}
+
+
+
+
+
+/* IDs --------------------------------------------------------------- */
+
+#dislike,#like{
+    display: none;
+}
+
+#label-like{
+    background-color: #fff;
+    background-image: url(../img/like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: center top 20px;
+    border: 3px solid #6E38A4;
+}
+
+#label-like:hover{
+    background-color: #6E38A4;
+    background-image: url(../img/like2.svg);
+    background-repeat: no-repeat;
+    background-position: center top 10px;
+}
+
+#label-dislike{
+    background-color: #fff;
+    background-image: url(../img/dislike.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 3px solid #6E38A4;
+
+}
+
+#label-dislike:hover{
+    background-color: #6E38A4;
+    background-image: url(../img/dislike2.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#selectuser{
+    width: 100px;
+    margin-left: 80px;
+    text-align: end;
+}
+
+#selectuser:hover{
+    color: #6E38A4;
+}
+
+/* Margins --------------------------------------------------------------- */
+
+
+.margin-body-top{
+    margin-top: 50px;
+}
+
+.margin-form{
+    margin: 20px 0 15px 0;
+}
+
+.margin-form-text{
+    margin-top: 30px;
+}
+
+.margin-choice{
+    margin-right: 70px;
+}
+
+.margin-header{
+    margin-bottom: 80px;
+    margin-bottom: 30px;
+}
+
+
+
+/* Flex-box --------------------------------------------------------------- */
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-spaceb{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-end{
+    align-items: end;
+}
+.justify-cont-center {
+    justify-content: center;
+}
+
+/* text --------------------------------------------------------------- */
+
+.text{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.a-text{
+    text-decoration: none;
+    color: #6E38A4;
+    transition: 0.2s;
+}
+
+.a-hover:hover{
+    text-decoration: underline;
+}
+
+.pointer-swipe{
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+}
+
+.pointer-swipe:hover, .pointer-swipe:active{
+    border: 3px solid #6E38A4;
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
+/* Formulaire --------------------------------------------------------------- */
+
+.form-text{
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 15px 2px;
+    
+}
+.form-text:focus {
+    border-color: #6E38A4;
+    outline: none;
+}
+
+.submit-button{
+    padding: 15px 15px;
+    text-align: center;
+    font-size: 48px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #6E38A4;
+    background: transparent;
+    cursor: pointer;
+    /* transition: ease-out 0.5s; */
+    transition: ease-out 0.2s;
+    border: 3px solid #6E38A4;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #6E38A4;
+    width: 340px;
+    margin-top: 30px;
+}
+
+.submit-button:hover, .submit-button:active{
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #6E38A4;
+}
+
+/* Logo -----------------------------------------------------------------*/
+
+.logo-reperio {
+    width: 330px;
+}
+
+.logo-reperio2{
+    width: 100px;
+}
+
+.pdp{
+    width: 80px;
+    height: 80px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: grey;
+    margin-left: 100px;
+}
+
+.swipe{
+    height: 500px;
+    width: 300px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: grey;
+}
+
+
+/* Switch formulaire -----------------------------------------------------------------*/
+
+.contour-switch {
+    width: 69px;
+    height: 27px;
+    border: solid #6E38A4 3px;
+    border-radius: 100px;
+    margin: 0 24px 0 24px;
+}
+.div-switch2 {
+    margin-top: 110px;
+    
+}
+.div-switch {
+    margin-top: 30px;
+}
+
+.switch {
+    background-color: black;
+    width: 17px;
+    height: 17px;
+    border-radius: 100px;
+    display: block;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+.switch2 {
+    margin-left: 44px;
+}
+.error {
+    color: rgb(207, 15, 15);
+    padding-top: 3px;
+}
+
+.text-success {
+    margin: 30px 0;
+    font-size: 30px;
+}
