@@ -35,7 +35,7 @@ Vous devez inclure la base de données (fichier SQL dans le dossier "base data-b
 Vous devez modifier les informations de connexion à la base de données dans V0.1/config/db.js pour correspondre à votre base de données : nom de la base de données, URL, utilisateur, mot de passe et port.
 
 Exemple :
-
+```
 const connection = mysql.createConnection({
 host: "localhost",
 user: "root",
@@ -43,7 +43,7 @@ port: "8889",
 password: "root",
 database: "db-reperio-v1",
 });
-
+```
 ### Étape 3 : Lancer le serveur
 
 Après avoir modifié les informations de connexion à la base de données, exécutez le serveur en accédant à V1.0 dans un terminal et en exécutant la commande "npm start". L'adresse de l'application sera affichée dans le terminal.
