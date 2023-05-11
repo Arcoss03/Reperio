@@ -54,7 +54,7 @@ Si le port que vous utilisez est déjà utilisé, une erreur peut se produire.
 
 ## Conseils
 
-- Le dossier "Bank-photo" fournit des images de CV et de descriptions de poste.
+- Le dossier "Bank-photo" fournit des images de CV et de fiches de poste.
 - Pour accéder à la page d'administration, accédez à l'URL /admin.
   utilisateur: "admin"
   mot de passe: "admin"
